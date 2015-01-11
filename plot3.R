@@ -1,0 +1,10 @@
+png(filename = "plot3.png",width = 480, height = 480, units = "px")
+dt <- read.csv("household_power_consumption.txt",sep=";")
+dt <- dt[dt$Date %in% c('2/2/2007','1/2/2007'),]
+plot(dt$Sub_metering_1, type="l", xlab="", xaxt='n', col="black", ylab="Energy sub metering")
+lines(dt$Sub_metering_2, type="l", xlab="", xaxt='n', col="red")
+lines(dt$Sub_metering_3, type="l", xlab="", xaxt='n', col="blue")
+axis(1, labels=c("Thu", "Fri", "Sat"), at=c(0,1440,2880))
+axis(2, at=c(0,10,20,30))
+legend("topright", lty=c(1,1), col = c("black", "red", "blue" ), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+dev.off()
